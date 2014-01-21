@@ -2,7 +2,8 @@
 
 /* UI Controllers */
 
-var phonecatUIControllers = angular.module('phonecatUIControllers', ['ui.bootstrap']);
+var phonecatUIControllers = angular.module('phonecatUIControllers', ['ui.bootstrap',
+	'ui.router']);
 
 phonecatUIControllers.controller('UICollapseController', ['$scope', 
 		function ($scope) {
@@ -10,7 +11,8 @@ phonecatUIControllers.controller('UICollapseController', ['$scope',
 			$scope.ui.menu = {
 				isCollapsed:"true",
 				menuItems:[
-					{name:"Phones", url:"phones"},
+					{name:"Phones", url:"phone-list"},
+					{name:"Phone detail", url:"phone-detail"},
 					{name:"Car", url:"car"},
 					{name:"Traffic Info", url:"traffic"},
 					{name:"Map", url:"map"}]	
