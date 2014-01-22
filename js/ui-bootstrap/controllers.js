@@ -26,7 +26,7 @@ phonecatUIControllers.controller('UITabController', ['$scope',
 			//$scope.ui = {};
 			$scope.ui = $scope.ui || {};
 			$scope.ui.tabs = [
-				{ title:"Dynamic Title 1", 
+				{ title:"Default Title 1", 
 					content:"Dynamic content 1",
 					page:"partials/phone-list.html",
 					alertMe: function() {
@@ -35,8 +35,8 @@ phonecatUIControllers.controller('UITabController', ['$scope',
 						});
 					}
 				},
-				{ title:"Dynamic Title 3", 
-					content:"Dynamic content 3",
+				{ title:"Default Title 2", 
+					content:"Dynamic content 2",
 					page:"partials/phone-detail.html",
 					alertMe: function() {
 						setTimeout(function() {
@@ -53,41 +53,29 @@ phonecatUIControllers.controller('UITabController', ['$scope',
 			//$scope.ui.menu.isCollapsed = true;
 		}]);
 
-/*
 phonecatUIControllers.controller('UIFragmentController', ['$scope', 
 		'$state',
 		function ($scope, $state) {
-    	$scope.data = $state.current.data.customData1; // outputs 5;	
+    	// test 
+			// $scope.data = $state.current.data.customData1; // outputs 5;	
 
 			$scope.ui = $scope.ui || {};
-			$scope.ui.tabs = [
-				{ title:"Dynamic Title 1", 
-					content:"Dynamic content 1",
-					page:"partials/phone-list.html",
-					alertMe: function() {
-						setTimeout(function() {
-							//alert("You've selected the alert tab!");
-						});
-					}
-				},
-				{ title:"Dynamic Title 3", 
-					content:"Dynamic content 3",
-					page:"partials/phone-detail.html",
-					alertMe: function() {
-						setTimeout(function() {
-							//alert("You've selected the alert tab!");
-						});
-					}
-				},
-	    	{ title:"Dynamic Title 2", 
-					content:"Dynamic content 2", 
-					disabled: true
-				}
-			];
-
+			$scope.ui.fragments = $state.current.data.fragments; 
+			//
+			//$state.transitionTo('testfragment.fragment1');
 			//$scope.ui.menu.isCollapsed = true;
 		}]);
-*/
+
+phonecatUIControllers.controller('Fragment1Controller', ['$scope', 
+		'$state',
+		function ($scope, $state) {
+    	// test 
+			$scope.testdata = $state.current.fragmentdata.customData1; // outputs 5;	
+
+			$scope.ui = $scope.ui || {};
+			//$scope.ui.menu.isCollapsed = true;
+		}]);
+
 
 /*
 var phonecatControllers = angular.module('phonecatControllers', []);

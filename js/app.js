@@ -72,13 +72,45 @@ phonecatApp.config(function($stateProvider, $urlRouterProvider) {
 			$scope.things = ["A", "Set", "Of", "Things"];
 		}
 	})
+	// this state start Fragment Manager
 	.state('testfragment', {
 		url: "/testfragment",
 		templateUrl: "partials/testbuttonfragment.html",
-		controller: 'PhoneListCtrl',
+		controller: 'UIFragmentController',
 		data: {
+			// define 2 fragments
+			fragments: [
+				{ title:"TabFragment Title 1", 
+					content:"Dynamic content 1",
+					onselect: function() {
+						//$state.transitionTo('testfragment.fragment1');
+
+						// works
+						//setTimeout(function() {
+						//	alert("You've selected the alert tab!");
+						//});
+					}
+				},
+				{ title:"TabFragment Title 2", 
+					content:"Dynamic content 2",
+					page:"partials/phone-detail.html"
+					//disabled: true,
+				}],
 			customData1: 44,
 			customData2: "red"
 		} 
 	})
+	// this state nests 'testfragment' and renders fragment1
+	.state('testfragment.fragment1', {
+		url: "/fragment1",
+		templateUrl: "partials/testbuttonfragment.fragment1.html",
+		controller: 'Fragment1Controller',
+		fragmentdata: {
+			// inherit 2 fragments
+			// overwrite customData1
+			customData1: "customData1 fragment 1 ",
+			customData2: "red"
+		} 
+	})
+	//
 });

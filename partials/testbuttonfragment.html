@@ -1,8 +1,21 @@
 
 
 <hr>
-<p>test button Fragment?</p>
+<p>Test Button Fragment?</p>
 
-{{phones}}
+<!-- load unused UITabController here causes performance issue (js not response) -->
+<!-- <div id="tab" ng-controller="UITabController"> -->
+<div id="tab" ng-controller="UITabController">
+	<tabset>
+	<tab ng-repeat="tab in ui.fragments" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled" select="tab.onselect()">
+
+		{{tab}}
+
+	</tab>
+	</tabset>
+</div>
+
+		<p>testbuttonfragment.html ui-view</p>
+		<div ui-view></div>
 <hr>
 
