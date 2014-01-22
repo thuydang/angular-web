@@ -33,7 +33,7 @@ phonecatApp.config(['$routeProvider',
 
 phonecatApp.config(function($stateProvider, $urlRouterProvider) {
 	// For any unmatched url, redirect to /phones
-	$urlRouterProvider.otherwise("/phone-list");
+	$urlRouterProvider.otherwise("/phones");
 	// Now set up the states
 	$stateProvider
 	.state('state1', {
@@ -44,13 +44,13 @@ phonecatApp.config(function($stateProvider, $urlRouterProvider) {
 			$scope.phones = ["A", "Set", "Of", "Things"];
 		}
 	})
-	.state('phone-list', {
-		url: "/phone-list",
+	.state('phones', {
+		url: "/phones",
 		templateUrl: "partials/phone-list.html",
 		controller: 'PhoneListCtrl'
 	})
 	.state('phone-detail', {
-		url: "/phone-detail",
+		url: "/phones/:phoneId",
 		templateUrl: "partials/phone-detail.html",
 		controller: 'PhoneDetailCtrl'
 	})
@@ -71,5 +71,14 @@ phonecatApp.config(function($stateProvider, $urlRouterProvider) {
 		controller: function($scope) {
 			$scope.things = ["A", "Set", "Of", "Things"];
 		}
+	})
+	.state('testfragment', {
+		url: "/testfragment",
+		templateUrl: "partials/testbuttonfragment.html",
+		controller: 'PhoneListCtrl',
+		data: {
+			customData1: 44,
+			customData2: "red"
+		} 
 	})
 });

@@ -11,10 +11,10 @@ phonecatUIControllers.controller('UICollapseController', ['$scope',
 			$scope.ui.menu = {
 				isCollapsed:"true",
 				menuItems:[
-					{name:"Phones", url:"phone-list"},
-					{name:"Phone detail", url:"phone-detail"},
 					{name:"Car", url:"car"},
+					{name:"Phones", url:"phones"},
 					{name:"Traffic Info", url:"traffic"},
+					{name:"Test Fragment", url:"testfragment"},
 					{name:"Map", url:"map"}]	
 			};
 
@@ -53,6 +53,41 @@ phonecatUIControllers.controller('UITabController', ['$scope',
 			//$scope.ui.menu.isCollapsed = true;
 		}]);
 
+/*
+phonecatUIControllers.controller('UIFragmentController', ['$scope', 
+		'$state',
+		function ($scope, $state) {
+    	$scope.data = $state.current.data.customData1; // outputs 5;	
+
+			$scope.ui = $scope.ui || {};
+			$scope.ui.tabs = [
+				{ title:"Dynamic Title 1", 
+					content:"Dynamic content 1",
+					page:"partials/phone-list.html",
+					alertMe: function() {
+						setTimeout(function() {
+							//alert("You've selected the alert tab!");
+						});
+					}
+				},
+				{ title:"Dynamic Title 3", 
+					content:"Dynamic content 3",
+					page:"partials/phone-detail.html",
+					alertMe: function() {
+						setTimeout(function() {
+							//alert("You've selected the alert tab!");
+						});
+					}
+				},
+	    	{ title:"Dynamic Title 2", 
+					content:"Dynamic content 2", 
+					disabled: true
+				}
+			];
+
+			//$scope.ui.menu.isCollapsed = true;
+		}]);
+*/
 
 /*
 var phonecatControllers = angular.module('phonecatControllers', []);
