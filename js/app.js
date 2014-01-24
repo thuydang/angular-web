@@ -82,7 +82,7 @@ phonecatApp.config(function($stateProvider, $urlRouterProvider) {
 			fragments: [
 				{ title:"TabFragment Title 1", 
 					content:"Dynamic content 1",
-					fragmentState:".fragment1",
+					fragmentState:"testfragment.fragment1",
 					onselect: function() {
 						
 						//$state.transitionTo('testfragment.fragment1');
@@ -94,7 +94,10 @@ phonecatApp.config(function($stateProvider, $urlRouterProvider) {
 				},
 				{ title:"TabFragment Title 2", 
 					content:"Dynamic content 2",
-					fragmentState:".fragment2",
+					fragmentState:"testfragment.fragment2",
+					onselect: function () {
+						transitionTo('testfragment.fragment2');
+					},
 					page:"partials/phone-detail.html"
 					//disabled: true,
 				}],

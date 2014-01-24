@@ -62,10 +62,30 @@ phonecatUIControllers.controller('UIFragmentController', ['$scope',
 
 			$scope.ui = $scope.ui || {};
 			$scope.ui.fragments = $state.current.data.fragments; 
-			//
+
+			// inject $state.transitionTo here.
+			/** 
+			 * This called by tab's select() to move to a state 
+			 * associating with the calling fragment.
+			 * @input: state name.
+			 */
+			$scope.fragmentTransition = $state.go;
+			/*
 			$scope.fragmentTransition = function (toState) {
-				$state.transitionTo(toState);
+				//$state.transitionTo(toState);
+				alert ("you are moving to " + toState);
 			};
+			*/
+			
+			$scope.fragmentTransition = (function () {
+				return function (toState) {
+					$state.go(toState);
+				}
+			})();
+
+			// work when This controller is loaded.
+			//$state.go('.fragment2');
+
 			//$scope.ui.menu.isCollapsed = true;
 		}]);
 
@@ -76,7 +96,6 @@ phonecatUIControllers.controller('Fragment1Controller', ['$scope',
 			$scope.testdata = $state.current.fragmentdata.customData1; // outputs 5;	
 
 			$scope.ui = $scope.ui || {};
-
 			//$scope.ui.menu.isCollapsed = true;
 		}]);
 
@@ -87,9 +106,6 @@ phonecatUIControllers.controller('Fragment2Controller', ['$scope',
 			$scope.testdata = $state.current.fragmentdata.customData1; // outputs 5;	
 
 			$scope.ui = $scope.ui || {};
-	
-			//$state.transitionTo('testfragment.fragment2');
-
 			//$scope.ui.menu.isCollapsed = true;
 		}]);
 
