@@ -78,21 +78,23 @@ phonecatApp.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl: "partials/testbuttonfragment.html",
 		controller: 'UIFragmentController',
 		data: {
-			// define 2 fragments
+			// define 2 fragments: each fragment has a tab oder button
 			fragments: [
 				{ title:"TabFragment Title 1", 
 					content:"Dynamic content 1",
+					fragmentState:".fragment1",
 					onselect: function() {
+						
 						//$state.transitionTo('testfragment.fragment1');
-
 						// works
-						//setTimeout(function() {
-						//	alert("You've selected the alert tab!");
-						//});
+						setTimeout(function() {
+							alert("You've selected the alert tab!");
+						});
 					}
 				},
 				{ title:"TabFragment Title 2", 
 					content:"Dynamic content 2",
+					fragmentState:".fragment2",
 					page:"partials/phone-detail.html"
 					//disabled: true,
 				}],
@@ -112,5 +114,18 @@ phonecatApp.config(function($stateProvider, $urlRouterProvider) {
 			customData2: "red"
 		} 
 	})
+	// this state nests 'testfragment' and renders fragment1
+	.state('testfragment.fragment2', {
+		url: "/fragment2",
+		templateUrl: "partials/testbuttonfragment.fragment2.html",
+		controller: 'Fragment1Controller',
+		fragmentdata: {
+			// inherit 2 fragments
+			// overwrite customData1
+			customData1: "customData1 fragment 2 ",
+			customData2: "red"
+		} 
+	})
 	//
+
 });

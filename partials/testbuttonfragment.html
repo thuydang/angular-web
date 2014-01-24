@@ -5,11 +5,13 @@
 
 <!-- load unused UITabController here causes performance issue (js not response) -->
 <!-- <div id="tab" ng-controller="UITabController"> -->
-<div id="tab" ng-controller="UITabController">
+<div id="tab">
 	<tabset>
-	<tab ng-repeat="tab in ui.fragments" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled" select="tab.onselect()">
+	<tab ng-repeat="tab in ui.fragments" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled" select="fragmentTransition(tab.fragmentState)">
 
 		{{tab}}
+		<br>
+		<a ui-sref={{tab.fragmentState}}>Load fragment to the ui-view below:</a>
 
 	</tab>
 	</tabset>

@@ -58,11 +58,14 @@ phonecatUIControllers.controller('UIFragmentController', ['$scope',
 		function ($scope, $state) {
     	// test 
 			// $scope.data = $state.current.data.customData1; // outputs 5;	
+			$scope.data = "this is it";
 
 			$scope.ui = $scope.ui || {};
 			$scope.ui.fragments = $state.current.data.fragments; 
 			//
-			//$state.transitionTo('testfragment.fragment1');
+			$scope.fragmentTransition = function (toState) {
+				$state.transitionTo(toState);
+			};
 			//$scope.ui.menu.isCollapsed = true;
 		}]);
 
@@ -73,8 +76,23 @@ phonecatUIControllers.controller('Fragment1Controller', ['$scope',
 			$scope.testdata = $state.current.fragmentdata.customData1; // outputs 5;	
 
 			$scope.ui = $scope.ui || {};
+
 			//$scope.ui.menu.isCollapsed = true;
 		}]);
+
+phonecatUIControllers.controller('Fragment2Controller', ['$scope', 
+		'$state',
+		function ($scope, $state) {
+    	// test 
+			$scope.testdata = $state.current.fragmentdata.customData1; // outputs 5;	
+
+			$scope.ui = $scope.ui || {};
+	
+			//$state.transitionTo('testfragment.fragment2');
+
+			//$scope.ui.menu.isCollapsed = true;
+		}]);
+
 
 
 /*
