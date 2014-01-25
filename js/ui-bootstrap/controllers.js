@@ -2,10 +2,10 @@
 
 /* UI Controllers */
 
-var phonecatUIControllers = angular.module('phonecatUIControllers', ['ui.bootstrap',
+var UIControllers = angular.module('UIControllers', ['ui.bootstrap',
 	'ui.router']);
 
-phonecatUIControllers.controller('UICollapseController', ['$scope', 
+UIControllers.controller('UICollapseController', ['$scope', 
 		function ($scope) {
 			$scope.ui = $scope.ui || {};
 			$scope.ui.menu = {
@@ -21,7 +21,7 @@ phonecatUIControllers.controller('UICollapseController', ['$scope',
 			//$scope.ui.menu.isCollapsed = true;
 		}]);
 
-phonecatUIControllers.controller('UITabController', ['$scope', 
+UIControllers.controller('UITabController', ['$scope', 
 		function ($scope) {
 			//$scope.ui = {};
 			$scope.ui = $scope.ui || {};
@@ -53,7 +53,7 @@ phonecatUIControllers.controller('UITabController', ['$scope',
 			//$scope.ui.menu.isCollapsed = true;
 		}]);
 
-phonecatUIControllers.controller('UIFragmentController', ['$scope', 
+UIControllers.controller('UIFragmentController', ['$scope', 
 		'$state',
 		function ($scope, $state) {
     	// test 
@@ -62,6 +62,11 @@ phonecatUIControllers.controller('UIFragmentController', ['$scope',
 
 			$scope.ui = $scope.ui || {};
 			$scope.ui.fragments = $state.current.data.fragments; 
+			
+			// work when This controller is loaded.
+			// goto default (first) fragment.
+			$state.go($state.current.data.fragments[0].fragmentState);
+			//$state.go('.fragment1');
 
 			// inject $state.transitionTo here.
 			/** 
@@ -69,27 +74,14 @@ phonecatUIControllers.controller('UIFragmentController', ['$scope',
 			 * associating with the calling fragment.
 			 * @input: state name.
 			 */
-			$scope.fragmentTransition = $state.go;
-			/*
-			$scope.fragmentTransition = function (toState) {
-				//$state.transitionTo(toState);
-				alert ("you are moving to " + toState);
+			$scope.fragmentTransition = function (state) {
+				$state.go(state);
 			};
-			*/
-			
-			$scope.fragmentTransition = (function () {
-				return function (toState) {
-					$state.go(toState);
-				}
-			})();
-
-			// work when This controller is loaded.
-			//$state.go('.fragment2');
 
 			//$scope.ui.menu.isCollapsed = true;
 		}]);
 
-phonecatUIControllers.controller('Fragment1Controller', ['$scope', 
+UIControllers.controller('Fragment1Controller', ['$scope', 
 		'$state',
 		function ($scope, $state) {
     	// test 
@@ -99,12 +91,11 @@ phonecatUIControllers.controller('Fragment1Controller', ['$scope',
 			//$scope.ui.menu.isCollapsed = true;
 		}]);
 
-phonecatUIControllers.controller('Fragment2Controller', ['$scope', 
+UIControllers.controller('Fragment2Controller', ['$scope', 
 		'$state',
 		function ($scope, $state) {
     	// test 
 			$scope.testdata = $state.current.fragmentdata.customData1; // outputs 5;	
-
 			$scope.ui = $scope.ui || {};
 			//$scope.ui.menu.isCollapsed = true;
 		}]);

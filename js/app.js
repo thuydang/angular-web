@@ -8,7 +8,7 @@ var phonecatApp = angular.module('phonecatApp', [
   'phonecatControllers',
   'phonecatFilters',
   'phonecatServices',
-  'phonecatUIControllers',
+  'UIControllers',
   'ui.router',
   'ui.bootstrap'
 ]);
@@ -121,7 +121,7 @@ phonecatApp.config(function($stateProvider, $urlRouterProvider) {
 	.state('testfragment.fragment2', {
 		url: "/fragment2",
 		templateUrl: "partials/testbuttonfragment.fragment2.html",
-		controller: 'Fragment1Controller',
+		controller: 'Fragment2Controller',
 		fragmentdata: {
 			// inherit 2 fragments
 			// overwrite customData1
